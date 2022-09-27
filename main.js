@@ -13,6 +13,20 @@ const menuItems = [
     label: 'File',
     submenu: [
       {
+        label: 'New Window',
+        click: async () => {
+          const win2 = new BrowserWindow({
+            height: 300,
+            width: 400,
+            show: false,
+            backgroundColor: '#2e2c29',
+          });
+          win2.loadFile('index2.html');
+          // win2.loadURL('https://github.com');
+          win2.once('ready-to-show', () => win2.show());
+        },
+      },
+      {
         label: 'Learn More',
         click: async () => {
           await shell.openExternal('https://github.com');
