@@ -12,7 +12,10 @@ captureBtn.addEventListener('click', () => {
   const dataUrl = canvas.toDataURL();
   console.log(dataUrl);
   img.src = dataUrl;
+  window.electronAPI.sendImage(dataUrl);
 });
+
+console.log(window.electronAPI);
 
 navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
   console.log(stream);
