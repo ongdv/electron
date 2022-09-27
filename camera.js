@@ -13,6 +13,9 @@ captureBtn.addEventListener('click', () => {
   console.log(dataUrl);
   img.src = dataUrl;
   window.electronAPI.sendImage(dataUrl);
+  new Notification('Image Capture', {
+    body: 'Image is successfully capture from live video',
+  });
 });
 
 console.log(window.electronAPI);
