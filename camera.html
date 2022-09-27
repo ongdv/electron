@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="image-src 'self' default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
 </head>
 
 <body>
     <h1>Camera</h1>
-    <video autoplay width="200" height="300" id="camera"></video>
+    <video autoplay width="300" height="200" id="camera"></video>
+    <img src="https://www.electronjs.org/assets/img/logo.svg" id="img" alt="img">
+    <button id="captureBtn">Capture Image</button>
     <script src="camera.js"></script>
 </body>
 
