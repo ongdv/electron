@@ -1,4 +1,5 @@
 import React from 'react';
+import MainPresenter from './MainPresenter';
 
 type Props = {};
 
@@ -8,7 +9,7 @@ const MainContainer = (props: Props) => {
   /* Functions */
   /* Hooks */
   /* Render */
-  return <div>MainContainer</div>;
+  return <MainPresenter />;
 };
 
 export default MainContainer;
