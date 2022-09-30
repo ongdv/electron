@@ -3,6 +3,7 @@ exports.__esModule = true;
 var electron_1 = require("electron");
 var isDev = require("electron-is-dev");
 var path = require("path");
+var constant_1 = require("./constant");
 var mainWindow;
 var createWindow = function () {
     mainWindow = new electron_1.BrowserWindow({
@@ -17,7 +18,8 @@ var createWindow = function () {
             // node환경처럼 사용하기
             nodeIntegration: true,
             // 개발자도구
-            devTools: isDev
+            devTools: isDev,
+            contextIsolation: false
         }
     });
     mainWindow.loadURL(isDev
@@ -31,6 +33,9 @@ var createWindow = function () {
     mainWindow.on('closed', function () { return (mainWindow = undefined); });
     mainWindow.focus();
 };
+electron_1.ipcMain.on(constant_1.SEND_MAIN_PING, function (event, arg) {
+    console.log('Main Received a ping!!!');
+});
 electron_1.app.on('ready', createWindow);
 // Quit when all windows are closed.
 electron_1.app.on('window-all-closed', function () {

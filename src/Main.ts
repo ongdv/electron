@@ -1,6 +1,7 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as isDev from 'electron-is-dev';
 import * as path from 'path';
+import { SEND_MAIN_PING } from './constant';
 
 let mainWindow: BrowserWindow;
 
@@ -18,6 +19,7 @@ const createWindow = () => {
       nodeIntegration: true,
       // 개발자도구
       devTools: isDev,
+      contextIsolation: false,
     },
   });
 
@@ -37,6 +39,10 @@ const createWindow = () => {
   mainWindow.on('closed', () => (mainWindow = undefined!));
   mainWindow.focus();
 };
+
+ipcMain.on(SEND_MAIN_PING, (event, arg) => {
+  console.log('Main Received a ping!!!');
+});
 
 app.on('ready', createWindow);
 
